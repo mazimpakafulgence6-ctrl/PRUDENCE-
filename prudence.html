@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Prudence Online Shopping | Mbarara, Uganda</title>
+    <!-- Font Awesome 6 (Free CDN) for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Google Fonts: Poppins & Playfair Display for elegance -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #fefaf5;
+            color: #2c2b28;
+            scroll-behavior: smooth;
+        }
+
+        h1, h2, h3, .logo-text {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* container utility */
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* header & navigation */
+        header {
+            background: #ffffffea;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid #f0e2d0;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            padding: 1rem 0;
+        }
+
+        .logo h1 {
+            font-size: 1.7rem;
+            letter-spacing: -0.3px;
+            color: #a55d35;
+        }
+        .logo p {
+            font-size: 0.75rem;
+            letter-spacing: 1px;
+            color: #7c5e45;
+            font-weight: 500;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            font-weight: 600;
+            color: #3a2c23;
+            transition: 0.2s;
+            font-size: 1rem;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: #c17b4c;
+            border-bottom: 2px solid #c17b4c;
+            padding-bottom: 4px;
+        }
+
+        /* mobile responsivness */
+        @media (max-width: 780px) {
+            .navbar {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            .nav-links {
+                justify-content: center;
+                gap: 1.2rem;
+            }
+        }
+
+        /* sections general */
+        section {
+            padding: 4rem 0;
+        }
+
+        .section-title {
+            font-size: 2.2rem;
+            font-weight: 600;
+            color: #4f3523;
+            margin-bottom: 2rem;
+            position: relative;
+            display: inline-block;
+        }
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: -12px;
+            left: 0;
+            width: 60%;
+            height: 3px;
+            background: #d9b48b;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #c17b4c;
+            color: white;
+            padding: 0.8rem 1.6rem;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.2s;
+            border: none;
+            cursor: pointer;
+        }
+        .btn-outline {
+            background: transparent;
+            border: 2px solid #c17b4c;
+            color: #c17b4c;
+        }
+        .btn-outline:hover {
+            background: #c17b4c;
+            color: white;
+        }
+        .btn:hover {
+            background: #9f5c32;
+            transform: translateY(-2px);
+        }
+
+        /* Hero section */
+        .hero {
+            background: linear-gradient(115deg, #fdf3e8 0%, #fbead9 100%);
+            border-radius: 0 0 40px 40px;
+            margin-bottom: 1rem;
+        }
+        .hero-grid {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+        .hero-content {
+            flex: 1;
+        }
+        .hero-content h2 {
+            font-size: 3rem;
+            color: #482e1c;
+            margin-bottom: 1rem;
+        }
+        .hero-content p {
+            font-size: 1.1rem;
+            margin-bottom: 1.8rem;
+            color: #5a3f2c;
+        }
+        .hero-image {
+            flex: 1;
+            text-align: center;
+        }
+        .hero-image img {
+            max-width: 100%;
+            border-radius: 30px;
+            box-shadow: 0 20px 30px -12px rgba(0,0,0,0.1);
+        }
+
+        /* products / domestic needs grid */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 1rem;
+        }
+        .product-card {
+            background: white;
+            border-radius: 28px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+            transition: 0.25s ease;
+            text-align: center;
+            padding-bottom: 1.2rem;
+        }
+        .product-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 30px -8px rgba(0,0,0,0.12);
+        }
+        .product-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        .product-card h3 {
+            margin: 1rem 0 0.4rem;
+            font-size: 1.3rem;
+            color: #4f3523;
+        }
+        .product-card p {
+            padding: 0 1rem;
+            color: #7c6b5c;
+        }
+        .price {
+            font-weight: bold;
+            color: #c17b4c;
+            margin: 0.6rem 0;
+        }
+
+        /* interior design gallery */
+        .interior-gallery {
+            background: #fff7f0;
+            border-radius: 48px;
+            padding: 2rem;
+            margin-top: 1rem;
+        }
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.8rem;
+            margin-top: 1.5rem;
+        }
+        .gallery-item {
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 6px 14px rgba(0,0,0,0.05);
+            background: white;
+        }
+        .gallery-item img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            transition: 0.3s;
+        }
+        .gallery-item p {
+            padding: 0.8rem;
+            font-weight: 500;
+            background: white;
+            text-align: center;
+        }
+
+        /* about us */
+        .about-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            align-items: center;
+        }
+        .about-text {
+            flex: 1.5;
+        }
+        .about-text p {
+            margin-bottom: 1rem;
+            line-height: 1.5;
+        }
+        .about-img {
+            flex: 1;
+            text-align: center;
+        }
+        .about-img img {
+            max-width: 100%;
+            border-radius: 32px;
+            box-shadow: 0 20px 25px -12px rgba(0,0,0,0.1);
+        }
+
+        /* feedback / testimonials */
+        .feedback-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+        .testimonial {
+            background: white;
+            border-radius: 28px;
+            padding: 1.8rem;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.03);
+            border: 1px solid #f3e7dd;
+            transition: all 0.2s;
+        }
+        .testimonial i {
+            color: #d9b48b;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        .testimonial p {
+            font-style: italic;
+            margin: 1rem 0;
+            color: #3f3329;
+        }
+        .customer-name {
+            font-weight: 700;
+            color: #a55d35;
+        }
+
+        /* contact & footer */
+        .contact-info {
+            background: #2f241d;
+            color: #fdecdb;
+            border-radius: 40px;
+            padding: 2rem;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1.5rem;
+        }
+        .contact-details i {
+            margin-right: 10px;
+            color: #e2b58b;
+        }
+        .contact-details p {
+            margin: 0.8rem 0;
+            font-size: 1.1rem;
+        }
+        .footer-bottom {
+            text-align: center;
+            padding: 2rem 0 1rem;
+            font-size: 0.85rem;
+            color: #8f7a68;
+            border-top: 1px solid #eee2d6;
+            margin-top: 1rem;
+        }
+
+        /* page linking active class via js (optional) but we use simple */
+        @media (max-width: 550px) {
+            .hero-content h2 { font-size: 2rem; }
+            .section-title { font-size: 1.8rem; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="container">
+        <div class="navbar">
+            <div class="logo">
+                <h1>PRUDENCE</h1>
+                <p>online shopping • interior design</p>
+            </div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home" class="nav-link active" data-page="home">Home</a></li>
+                <li><a href="#about" class="nav-link" data-page="about">About Us</a></li>
+                <li><a href="#feedback" class="nav-link" data-page="feedback">Customer Feedback</a></li>
+                <li><a href="#contact" class="nav-link" data-page="contact">Contact</a></li>
+            </ul>
+        </div>
+    </div>
+</header>
+
+<main>
+    <!-- ========== HOME SECTION ========== -->
+    <section id="home" class="page-section">
+        <div class="hero">
+            <div class="container">
+                <div class="hero-grid">
+                    <div class="hero-content">
+                        <h2>Your Everyday Comfort, <br>Designed with Heart.</h2>
+                        <p>Domestic needs & premium interior design in Mbarara, Uganda. <br>From kitchenware to cozy living rooms — we bring style home.</p>
+                        <a href="#contact" class="btn">Call Us Now <i class="fas fa-phone-alt"></i></a>
+                        <a href="#interior" class="btn btn-outline" style="margin-left: 0.8rem;">Explore Design</a>
+                    </div>
+                    <div class="hero-image">
+                        <img src="https://placehold.co/600x400/f8ede2/a55d35?text=Prudence+Home+Style" alt="Prudence home style showcase">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <!-- domestic needs section -->
+            <h2 class="section-title">🏠 Domestic Essentials</h2>
+            <div class="products-grid">
+                <div class="product-card">
+                    <img src="https://placehold.co/400x300/f0e0d2/7b4a2e?text=Cookware+Set" alt="Cookware set">
+                    <h3>Premium Cookware</h3>
+                    <p>Non-stick pots & pans, perfect for Ugandan kitchen.</p>
+                    <div class="price">UGX 85,000</div>
+                </div>
+                <div class="product-card">
+                    <img src="https://placehold.co/400x300/e9d9cb/a56744?text=Bedding+Luxury" alt="Luxury bedding">
+                    <h3>Soft Cotton Bedding</h3>
+                    <p>Breathable & elegant — transform your bedroom.</p>
+                    <div class="price">UGX 129,000</div>
+                </div>
+                <div class="product-card">
+                    <img src="https://placehold.co/400x300/f3e5da/9c6745?text=Storage+Solutions" alt="Home storage">
+                    <h3>Smart Storage</h3>
+                    <p>Baskets, shelves & organizers, keep things tidy.</p>
+                    <div class="price">UGX 45,000</div>
+                </div>
+                <div class="product-card">
+                    <img src="https://placehold.co/400x300/ecdccf/b37144?text=Tableware" alt="Tableware">
+                    <h3>Elegant Tableware</h3>
+                    <p>Ceramic plates, glass sets — daily luxury.</p>
+                    <div class="price">UGX 62,000</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- interior design highlight -->
+        <div class="container" id="interior">
+            <div class="interior-gallery">
+                <h2 class="section-title" style="margin-top: 0;">✨ Interior Design Inspiration</h2>
+                <p style="margin-bottom: 1rem;">We craft spaces that reflect your soul. From modern minimal to warm African aesthetics.</p>
+                <div class="gallery-grid">
+                    <div class="gallery-item">
+                        <img src="https://placehold.co/500x400/e5cfbc/b27a50?text=Living+Room+Elegance" alt="Living room design">
+                        <p>Cozy Living Room</p>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://placehold.co/500x400/dccbbc/b37348?text=Modern+Kitchen" alt="Modern Kitchen">
+                        <p>Contemporary Kitchen</p>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://placehold.co/500x400/f2e1cf/af7044?text=Bedroom+Bliss" alt="Bedroom design">
+                        <p>Serene Bedroom</p>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://placehold.co/500x400/e8d3c2/b87d4c?text=Office+Corner" alt="Home office">
+                        <p>Home Office Space</p>
+                    </div>
+                </div>
+                <div style="text-align: center; margin-top: 2rem;">
+                    <a href="#contact" class="btn">Book Design Consultation →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== ABOUT US SECTION ========== -->
+    <section id="about" class="page-section" style="background: #fef8f2; display: none;">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2 class="section-title">About Prudence Online Shopping</h2>
+                    <p>Founded in Mbarara, Uganda, <strong>Prudence Online Shopping</strong> is not just a store — we are your partners in creating a home that feels joyful, functional, and beautiful. Operating from the heart of Western Uganda, we deliver domestic needs across Mbarara city and beyond.</p>
+                    <p>We specialize in high-quality household items — kitchenware, storage, decor, bedding — and offer full-service <strong>interior design</strong> that respects your style and budget. Whether it's a single room makeover or a complete home design, our team brings warmth and elegance to every corner.</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Located in Mbarara, near Kakiika road. <br>
+                    <i class="fas fa-phone-alt"></i> Call / WhatsApp: <strong>0752 744561</strong><br>
+                    <i class="fas fa-clock"></i> Mon–Sat: 9am – 6pm, Sunday: appointment only</p>
+                    <a href="#contact" class="btn" style="margin-top: 1rem;">Talk to our team →</a>
+                </div>
+                <div class="about-img">
+                    <img src="https://placehold.co/500x500/f4e8de/b07448?text=Prudence+Team+%26+Showroom" alt="Prudence showroom Mbarara">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== CUSTOMER FEEDBACK SECTION ========== -->
+    <section id="feedback" class="page-section" style="display: none;">
+        <div class="container">
+            <h2 class="section-title">💬 What Our Customers Say</h2>
+            <div class="feedback-grid">
+                <div class="testimonial">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    <p>"Prudence transformed my living room! The team understood my vision and executed beautifully within budget. Also their domestic utensils are top-notch."</p>
+                    <div class="customer-name">— Nakamya Grace, Mbarara</div>
+                </div>
+                <div class="testimonial">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    <p>"Best online shopping experience in Mbarara. I ordered kitchen sets and they delivered within hours. Quality exceeds expectations. Highly recommend!"</p>
+                    <div class="customer-name">— Mugisha Brian, Kakoba</div>
+                </div>
+                <div class="testimonial">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                    <p>"Their interior design consultation changed our home atmosphere. Attention to detail, beautiful fabrics and space planning. Thank you Prudence!"</p>
+                    <div class="customer-name">— Atukunda Faith, Ruharo</div>
+                </div>
+                <div class="testimonial">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    <p>"Reliable, affordable and super friendly staff. From domestic items to full decor, they are our go-to shop in Mbarara."</p>
+                    <div class="customer-name">— Byaruhanga Samuel, Bwizibwera</div>
+                </div>
+            </div>
+            <div style="margin-top: 2rem; text-align: center; background: #fff3e9; border-radius: 60px; padding: 1rem;">
+                <i class="fas fa-smile-wink"></i> Have you shopped with us? <a href="#contact" style="color:#a55d35; font-weight:bold;">Leave your feedback</a> — we love hearing from you!
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== CONTACT SECTION (ALWAYS VISIBLE ALSO AS FOOTER COMPONENT) ========== -->
+    <section id="contact" class="page-section" style="padding-bottom: 2rem;">
+        <div class="container">
+            <div class="contact-info">
+                <div>
+                    <h3 style="font-family: 'Playfair Display'; color: #ffefdf;">📍 Get in touch with Prudence</h3>
+                    <div class="contact-details">
+                        <p><i class="fas fa-phone-alt"></i> <strong>0752 744561</strong> (Call / WhatsApp)</p>
+                        <p><i class="fas fa-envelope"></i> hello@prudenceonline.ug</p>
+                        <p><i class="fas fa-map-pin"></i> Mbarara, Uganda – Opposite Kakyeka Stadium</p>
+                        <p><i class="fab fa-instagram"></i> @prudence_home_ug &nbsp;| <i class="fab fa-facebook"></i> Prudence Shopping</p>
+                    </div>
+                </div>
+                <div>
+                    <a href="tel:0752744561" class="btn" style="background: #c17b4c; margin-right: 0.5rem;"><i class="fas fa-phone"></i> Call Now</a>
+                    <a href="https://wa.me/256752744561?text=Hello%20Prudence%2C%20I%20need%20shopping%20%26%20design%20assistance" class="btn btn-outline" style="background: transparent; color: #fadbc8; border-color:#fadbc8;">WhatsApp</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom container">
+            <p>© 2025 PRUDENCE ONLINE SHOPPING — Mbarara, Uganda. Domestic needs & Interior Design Excellence.</p>
+        </div>
+    </section>
+</main>
+
+<!-- simple javascript for page navigation & showing/hiding sections with active link -->
+<script>
+    // get all sections with class "page-section"
+    const sections = document.querySelectorAll('.page-section');
+    const navLinks = document.querySelectorAll('.nav-link');
+
+    function hideAllSections() {
+        sections.forEach(section => {
+            section.style.display = 'none';
+        });
+    }
+
+    function showSectionById(id) {
+        const target = document.getElementById(id);
+        if(target) {
+            target.style.display = 'block';
+        } else if (id === 'home') {
+            const homeSection = document.getElementById('home');
+            if(homeSection) homeSection.style.display = 'block';
+        }
+    }
+
+    function setActiveLink(activeId) {
+        navLinks.forEach(link => {
+            const href = link.getAttribute('href').substring(1);
+            if(href === activeId) {
+                link.classList.add('active');
+            } else {
+                link.classList.remove('active');
+            }
+        });
+    }
+
+    // default: show home
+    hideAllSections();
+    document.getElementById('home').style.display = 'block';
+    setActiveLink('home');
+
+    // navigation event
+    navLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href').substring(1); // remove #
+            // targetId can be 'home','about','feedback','contact'
+            hideAllSections();
+            if (targetId === 'home') {
+                document.getElementById('home').style.display = 'block';
+                // scroll to top of home region
+                document.getElementById('home').scrollIntoView({ behavior: 'smooth' });
+            } else if (targetId === 'about') {
+                document.getElementById('about').style.display = 'block';
+                document.getElementById('about').scrollIntoView({ behavior: 'smooth' });
+            } else if (targetId === 'feedback') {
+                document.getElementById('feedback').style.display = 'block';
+                document.getElementById('feedback').scrollIntoView({ behavior: 'smooth' });
+            } else if (targetId === 'contact') {
+                document.getElementById('contact').style.display = 'block';
+                document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+            }
+            setActiveLink(targetId);
+        });
+    });
+
+    // additional: if user clicks on "Book Design Consultation" or "Call Us Now" they should see contact but keep active link
+    const consultBtn = document.querySelector('.interior-gallery .btn');
+    if(consultBtn){
+        consultBtn.addEventListener('click', function(e){
+            e.preventDefault();
+            hideAllSections();
+            document.getElementById('contact').style.display = 'block';
+            setActiveLink('contact');
+            document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+        });
+    }
+    // also any other internal links that target contact
+    const callBtns = document.querySelectorAll('.hero-content .btn, .about-text .btn');
+    callBtns.forEach(btn => {
+        if(btn.getAttribute('href') === '#contact'){
+            btn.addEventListener('click', function(e){
+                e.preventDefault();
+                hideAllSections();
+                document.getElementById('contact').style.display = 'block';
+                setActiveLink('contact');
+                document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+            });
+        }
+    });
+    // manual call for design consultation
+    const designConsult = document.querySelectorAll('a[href="#contact"]');
+    designConsult.forEach(btn => {
+        btn.addEventListener('click', function(e){
+            e.preventDefault();
+            hideAllSections();
+            document.getElementById('contact').style.display = 'block';
+            setActiveLink('contact');
+            document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+        });
+    });
+    // ensure when the whatsapp / phone is used naturally, they remain contact section (already visible by default but we handle anyway)
+</script>
+</body>
+</html>
